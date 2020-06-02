@@ -1,0 +1,784 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <!-- Theme Made By www.w3schools.com -->
+  <title>Sistem Informasi Banjir</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+  <link href="https://fonts.googleapis.com/css?family=Montserrat" rel="stylesheet" type="text/css">
+  <link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet" type="text/css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+  <link rel="stylesheet" type="text/css" href="/css/style1.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+  <!-- maps -->
+  <script src='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.js'></script>
+  <link href='https://api.tiles.mapbox.com/mapbox-gl-js/v1.4.1/mapbox-gl.css' rel='stylesheet' />
+
+  <!-- leaflet js -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.2.0/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.2.0/dist/leaflet.js"></script>
+
+  <!-- routing machine -->
+  <!-- <link rel="stylesheet" href="leaflet-routing-machine.css" />  -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css" />
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.js"></script>
+  <!-- <script src="leaflet-routing-machine.js"></script> -->
+
+
+</head>
+<body id="myPage" data-spy="scroll" data-target=".navbar" data-offset="60">
+
+<nav class="navbar navbar-default navbar-fixed-top">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <!-- <a class="navbar-brand" href="#myPage"><img width="30px" src="assets/logo ctf3.png"></a> for html native  -->
+      <a class="navbar-brand" href="#myPage"><img width="30px" src="/logo ctf3.png"></a> <!--for node js-->
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <!-- <li><a href="#about">ABOUT</a></li>
+        <li><a href="#services">SERVICES</a></li> -->
+        <li><a href="#portfolio">STATISTICS</a></li>
+        <li><a href="#map_div">MAPS</a></li>
+        <li><a href="/test">LOGIN ADMIN</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+
+<div class="jumbotron text-center">
+  <h1>Sistem Informasi Banjir</h1> 
+  <p>Monitoring Banjir di Jalan Raya</p> 
+  <form id="telegram" method="POST" action="/add_telegram">
+    <div class="input-group">
+      <input type="text" class="form-control" name="id_telegram" size="10" placeholder="Telegram Number" required>
+      <div class="input-group-btn">
+        <input type="submit" class="btn btn-info" value="Submit">
+      </div>
+    </div>
+  </form>
+</div>
+
+<!-- Container (Contact Section) -->
+<div id="map_div" class="container-fluid bg-grey">
+  <h2 class="text-center">MAPS</h2>
+  
+  <div class="row">
+    <div class="col-md-12" style="margin:auto;">
+      <div id="map"></div>
+    </div>
+  </div>
+</div>
+
+<!-- Container (Statistics Section) -->
+<div id="portfolio" class="container-fluid text-center bg-grey">
+  <h2>STATISTICS</h2><br>
+  <!-- <h4>Statistik Pembacaan Sensor</h4> -->
+  <div class="row text-center">
+    <!-- <div class="col-md-2"></div>
+    <div class="col-md-8">
+        <canvas id="myChart" width="100" height="70"></canvas>
+                    <script>
+                        function BuildChart(labels, values, dev) {
+                        var ctx = document.getElementById('myChart').getContext('2d');
+                        var myChart = new Chart(ctx, {
+                            type: 'line',
+                            
+                            data: {
+                                labels: labels,
+                                datasets: [{
+                                    label: 'Value Sensor',
+                                    data: values,
+                                    borderColor: 'rgba(75, 192, 192, 1)',
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderWidth: 2
+                                },
+                                {
+                                    label: 'Value Sensor 2',
+                                    data: labels,
+                                    borderColor: 'rgba(235, 52, 52, 1)',
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderWidth: 2
+                                },
+                                {
+                                    label: 'Value Sensor 2',
+                                    data: dev,
+                                    borderColor: 'rgba(50, 52, 52, 1)',
+                                    backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                    borderWidth: 2
+                                }]
+                            },
+                            options: {
+                                scales: {
+                                    yAxes: [{
+                                        ticks: {
+                                            beginAtZero: true
+                                        }
+                                    }]
+                                }
+                            }
+                        });
+                    }
+
+
+
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                        var json = JSON.parse(this.response);
+                        
+                    // Map json labels  back to values array
+                    var labels = json.map(function (e) {
+                        console.log(e);
+                        return e.auto_inc;
+                    
+                    });
+                        
+                    // Map json values back to values array
+                    var values = json.map(function (e) {
+                        console.log(e);
+                        return e.value_sensor; 
+                    });
+
+                    var dev = json.map(function (e) {
+                        console.log(e);
+                        return e.id_dev; 
+                    });
+
+                    console.log(values);
+                    var tampil;
+                    function compare() {  
+                    // first item of the array 
+                    let f=values[0];  
+                    // last item of the array 
+                    let l=values[values.length-1];  
+                    // printing the output to screen 
+                    document.write("First element is "+ f);  
+                    document.write("<br> Last element is "+ l);  
+                    
+                    
+
+                    if (l>=300) {
+                      document.write("<br>Banjir"); 
+                      window.tampil = "banjir";
+                      }
+                    else if (l<300){
+                      document.write("<br>Tidak Banjir"); 
+                      window.tampil = "tidak banjir";
+
+                    }
+
+
+                    } 
+                    compare(); 
+          
+
+                    BuildChart(labels, values, dev);
+                        }
+                    };
+                    // xhttp.open("GET", "/sensor_filter.json", false);
+                    xhttp.open("GET", "/hasil.json", false);
+                    xhttp.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                    xhttp.send();
+
+                    </script>
+    </div>
+    <div class="col-md-2"></div><br> -->
+    <!-- <br><button class="btn btn-default btn-lg">Get in Touch</button> -->
+    <!-- Untuk sensor 1 -->
+    <!-- <div class="col-md-12">
+        <input type="submit" value="Sensor1" onclick="submit1()">
+
+        <script type="text/javascript">
+            function submit1() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        // alert(xhr.response);
+                        location.reload(); 
+                    }
+                }
+                // var device = 10;
+                // xhr.open('get', 'http://127.0.0.1:3000/show_sensor/'+'1'+'/'+device+'', true);
+                xhr.open('get', 'http://127.0.0.1:3000/show_sensor/1', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                xhr.send();
+            }
+        </script> -->
+
+         <!-- Untuk sensor 2 -->
+
+        <!-- <input type="submit" value="Sensor2" onclick="submit2()">
+
+        <script type="text/javascript">
+            function submit2() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        // alert(xhr.response);
+                        location.reload(); 
+                    }
+                }
+                // var device = 20;
+                // xhr.open('get', 'http://127.0.0.1:3000/show_sensor/'+'2'+'/'+device+'', true);
+                xhr.open('get', 'http://127.0.0.1:3000/show_sensor/2', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                xhr.send();
+            }
+        </script> -->
+
+         <!-- Untuk sensor 3 -->
+
+        <!-- <input type="submit" value="Sensor3" onclick="submit3()">
+
+        <script type="text/javascript">
+            function submit3() {
+                var xhr = new XMLHttpRequest();
+                xhr.onreadystatechange = function () {
+                    if (xhr.readyState === 4) {
+                        // alert(xhr.response);
+                        location.reload(); 
+                    }
+                }
+                // var device = 30;
+                // xhr.open('get', 'http://127.0.0.1:3000/show_sensor/'+'3'+'/'+device+'', true);
+                xhr.open('get', 'http://127.0.0.1:3000/show_sensor/3', true);
+                xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                xhr.send();
+            }
+        </script>
+        </div>
+
+  </div><br> -->
+<!-- //CHART BARU -->
+  <script>var device = '<%= data %>' ;</script>
+  <div class="row text-center">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+        <h1>Statistik untuk Sensor 1 <script>document.write("Pada device " + window.device)</script></h1>
+          <canvas id="myChart2" width="100" height="70"></canvas>
+                      <script>
+                          // var device = 455;
+                          function BuildChart2(labels, values) {
+                          var ctx = document.getElementById('myChart2').getContext('2d');
+                          var myChart2 = new Chart(ctx, {
+                              type: 'line',
+                              
+                              data: {
+                                  labels: labels,
+                                  datasets: [{
+                                      label: 'Value Sensor',
+                                      data: values,
+                                      borderColor: 'rgba(75, 192, 192, 1)',
+                                      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                      borderWidth: 2
+                                  },]
+                              },
+                              options: {
+                                  scales: {
+                                      yAxes: [{
+                                          ticks: {
+                                              beginAtZero: true
+                                          }
+                                      }]
+                                  }
+                              }
+                          });
+                      }
+  
+  
+  
+                      var xhttp2 = new XMLHttpRequest();
+                      xhttp2.onreadystatechange = function() {
+                          if (this.readyState == 4 && this.status == 200) {
+                            var json = JSON.parse(this.response);
+                          
+                      // Map json labels  back to values array
+                      var labels = json.map(function (e) {
+                          console.log(e);
+                          return e.time;
+                      
+                      });
+                          
+                      // Map json values back to values array
+                      var values = json.map(function (e) {
+                          console.log(e);
+                          return e.value_sensor; 
+                      });
+
+                      //TAMBAHAN BUAT KETERANGAN - 1 JUNI 2020
+
+                    var tampil;
+                    function compare() {  
+                    // first item of the array 
+                    let f=values[0];  
+                    // last item of the array 
+                    let l=values[values.length-1];  
+                    // printing the output to screen 
+                    // document.write("First element is "+ f);  
+                    // document.write("<br> Last element is "+ l);  
+                    
+                    
+
+                    if (l>=200) {
+                      window.tampil = "banjir";
+                      document.write("<div class='alert alert-danger' role='alert'>"+
+                      "Banjir </div>");            
+                      }
+                    else if (l<200){
+                      window.tampil = "tidak banjir";
+                      document.write("<div class='alert alert-info' role='alert'>"+
+                      "Tidak Banjir </div>"); 
+
+                      }
+
+                    }
+                    compare(); 
+
+                    //TAMBAHAN BUAT KETERANGAN - END
+  
+                      console.log(values); 
+                      BuildChart2(labels, values);
+                          }
+                      };
+                      
+                      xhttp2.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'1'+'/'+device+'', false);
+                      // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
+                      xhttp2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                      xhttp2.send();
+  
+                      </script>
+      </div>
+      <div class="col-md-2"></div><br>
+      </div><br>
+
+      <!-- //CHART BARU2 -->
+  <div class="row text-center">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          <h1>Statistik untuk Sensor 2  <script>document.write("Pada device " + window.device)</script></h1>
+          <canvas id="myChart3" width="100" height="70"></canvas>
+                      <script>
+                          function BuildChart3(labels, values) {
+                          var ctx = document.getElementById('myChart3').getContext('2d');
+                          var myChart3 = new Chart(ctx, {
+                              type: 'line',
+                              
+                              data: {
+                                  labels: labels,
+                                  datasets: [{
+                                      label: 'Value Sensor',
+                                      data: values,
+                                      borderColor: 'rgba(75, 192, 192, 1)',
+                                      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                      borderWidth: 2
+                                  },]
+                              },
+                              options: {
+                                  scales: {
+                                      yAxes: [{
+                                          ticks: {
+                                              beginAtZero: true
+                                          }
+                                      }]
+                                  }
+                              }
+                          });
+                      }
+  
+  
+  
+                      var xhttp3 = new XMLHttpRequest();
+                      xhttp3.onreadystatechange = function() {
+                          if (this.readyState == 4 && this.status == 200) {
+                            var json = JSON.parse(this.response);
+                          
+                      // Map json labels  back to values array
+                      var labels = json.map(function (e) {
+                          console.log(e);
+                          return e.time;
+                      
+                      });
+                          
+                      // Map json values back to values array
+                      var values = json.map(function (e) {
+                          console.log(e);
+                          return e.value_sensor; 
+                      });
+  
+                      console.log(values); 
+
+                    //TAMBAHAN BUAT KETERANGAN - START - 1 JUNI 2020
+
+                    var tampil;
+                    function compare() {  
+                    // first item of the array 
+                    let f=values[0];  
+                    // last item of the array 
+                    let l=values[values.length-1];  
+                    // printing the output to screen 
+                    // document.write("First element is "+ f);  
+                    // document.write("<br> Last element is "+ l);  
+
+                    if (l > 0 ) {
+                      document.write("<div class='alert alert-danger' role='alert'>"+
+                      "Air berada di ketinggian "+ l + "</div>"); 
+                    } else if (l <= 0 ) {
+                      document.write("<div class='alert alert-info' role='alert'>"+
+                      "Air berada di ketinggian "+ l + "</div>"); 
+                    }
+
+                    }
+                    
+                     
+                    compare(); 
+
+                    //TAMBAHAN BUAT KETERANGAN - END
+
+                      BuildChart3(labels, values);
+                          }
+                      };
+                      
+                      xhttp3.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'2'+'/'+device+'', false);
+                      // xhttp3.open("get", "http://127.0.0.1:3000/show_sensor/2", true);
+                      xhttp3.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                      xhttp3.send();
+  
+                      </script>
+      </div>
+      <div class="col-md-2"></div><br>
+      </div><br>
+
+
+      <!-- //CHART BARU 3-->
+  <div class="row text-center">
+      <div class="col-md-2"></div>
+      <div class="col-md-8">
+          <h1>Statistik untuk Sensor 3 <script>document.write("Pada device " + window.device)</script></h1>
+          <canvas id="myChart4" width="100" height="70"></canvas>
+                      <script>
+                          function BuildChart4(labels, values) {
+                          var ctx = document.getElementById('myChart4').getContext('2d');
+                          var myChart4 = new Chart(ctx, {
+                              type: 'line',
+                              
+                              data: {
+                                  labels: labels,
+                                  datasets: [{
+                                      label: 'Value Sensor',
+                                      data: values,
+                                      borderColor: 'rgba(75, 192, 192, 1)',
+                                      backgroundColor: 'rgba(75, 192, 192, 0.2)',
+                                      borderWidth: 2
+                                  },]
+                              },
+                              options: {
+                                  scales: {
+                                      yAxes: [{
+                                          ticks: {
+                                              beginAtZero: true
+                                          }
+                                      }]
+                                  }
+                              }
+                          });
+                      }
+  
+  
+  
+                      var xhttp4 = new XMLHttpRequest();
+                      xhttp4.onreadystatechange = function() {
+                          if (this.readyState == 4 && this.status == 200) {
+                            var json = JSON.parse(this.response);
+                          
+                      // Map json labels  back to values array
+                      var labels = json.map(function (e) {
+                          console.log(e);
+                          return e.time;
+                      
+                      });
+                          
+                      // Map json values back to values array
+                      var values = json.map(function (e) {
+                          console.log(e);
+                          return e.value_sensor; 
+                      });
+  
+                      console.log(values); 
+
+                    //TAMBAHAN BUAT KETERANGAN - START - 1 JUNI 2020
+                    function compare() {  
+                    // first item of the array 
+                    let f=values[0];  
+                    // last item of the array 
+                    let l=values[values.length-1];  
+                    // printing the output to screen 
+                    // document.write("First element is "+ f);  
+                    // document.write("<br> Last element is "+ l);  
+                    
+                    
+
+                    if (l>0) {
+                      document.write("<div class='alert alert-danger' role='alert'>"+
+                      "Hujan </div>");            
+                      }
+                    else if (l<=0){
+                      document.write("<div class='alert alert-info' role='alert'>"+
+                      "Tidak Hujan </div>");            
+                     }
+                    }
+                    
+                    compare(); 
+
+                    //TAMBAHAN BUAT KETERANGAN - END
+
+                      BuildChart4(labels, values);
+                          }
+                      };
+
+                      xhttp4.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'3'+'/'+device+'', false);
+                      // xhttp4.open("get", "http://127.0.0.1:3000/show_sensor/3", true);
+                      xhttp4.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                      xhttp4.send();
+  
+                      </script>
+      </div>
+      <div class="col-md-2"></div><br>
+      </div><br>
+  
+  <h2>What our customers say</h2>
+  <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
+    <!-- Indicators -->
+    <ol class="carousel-indicators">
+      <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+      <li data-target="#myCarousel" data-slide-to="1"></li>
+      <li data-target="#myCarousel" data-slide-to="2"></li>
+    </ol>
+
+    <!-- Wrapper for slides -->
+    <div class="carousel-inner" role="listbox">
+      <div class="item active">
+        <h4>"This company is the best. I am so happy with the result!"<br><span>Michael Roe, Vice President, Comment Box</span></h4>
+      </div>
+      <div class="item">
+        <h4>"One word... WOW!!"<br><span>John Doe, Salesman, Rep Inc</span></h4>
+      </div>
+      <div class="item">
+        <h4>"Could I... BE any more happy with this company?"<br><span>Chandler Bing, Actor, FriendsAlot</span></h4>
+      </div>
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" role="button" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" role="button" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+<script>
+
+
+var mymap = L.map('map').setView([-6.9218999,107.6192314], 10);
+
+L.tileLayer('http://{s}.tile.osm.org/{z}/{x}/{y}.png', { attribution: '© OpenStreetMap'
+  //  ,maxZoom: 18,
+  //  tileSize: 512,
+    // zoomOffset: -1 
+}).addTo(mymap);
+  
+    //geolocation
+        if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function(position){
+      var latitude = position.coords.latitude;
+      var longitude = position.coords.longitude;
+      });
+      
+    mymap.locate({setView: true});
+
+    function onLocationFound(e) {
+        // var radius = e.accuracy / 2;
+        var radius = e.accuracy / 100;
+
+        L.marker(e.latlng).addTo(mymap)
+            .bindPopup("You are within " + radius + " meters from this point" + "<br><b>Anda Ada Disini <br>" /*+ e.latlng */).openPopup();
+
+        L.circle(e.latlng, radius).addTo(mymap);
+      }
+      mymap.on('locationfound', onLocationFound);
+    }else {
+      alert("Geolocation API is not supported in your browser. :(");
+    }
+
+    // ROUTING MACHINE - START
+  
+  // L.Routing.control({
+  //                     waypoints: [
+  //                         L.latLng(-6.7, 107.68),
+  //                         L.latLng(-6.7, 107.70)
+  //                     ],
+                     
+  //                    routeWhileDragging: true,
+                     
+                    
+  //                 }).addTo(mymap);
+
+        // ROUTING MACHINE - END
+
+
+//TRIAL 9 MEI
+
+var xhttp_dev = new XMLHttpRequest();
+                    xhttp_dev.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                        var json_dev = JSON.parse(this.response);
+                        
+
+                    // Map json labels  back to values array
+                    var id_dev = json_dev.map(function (z) {
+                        console.log(z);
+                        return (z.id_dev);
+                    });
+                        
+                    window.id_dev = id_dev;
+          
+                  
+                 //tambahan
+                    console.log(window.id_dev);
+      
+                  }
+                };
+                xhttp_dev.open('get', 'https://cekflood.herokuapp.com/show_maps', true);
+                xhttp_dev.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                xhttp_dev.open("GET", "/maps.json", false);
+                xhttp_dev.send();
+
+//END-TRIAL
+
+
+//tambahan
+var xhttp_maps = new XMLHttpRequest();
+                    xhttp_maps.onreadystatechange = function() {
+                        if (this.readyState == 4 && this.status == 200) {
+                        var json = JSON.parse(this.response);
+                        
+
+                    // Map json labels  back to values array
+                    var lat = json.map(function (a) {
+                        console.log(a);
+                        return a.lat;
+                    });
+                        
+                    // // Map json values back to values array
+                    var longi = json.map(function (a) {
+                        console.log(a);
+                        return (a.longi);
+
+                        
+                    });
+
+                    // // Map json values back to values array
+                    var loc = json.map(function (a) {
+                        console.log(a);
+                        return (a.loc);
+
+                        
+                    });
+
+                    var dev = json.map(function (a) {
+                        console.log(a);
+                        return (a.id_dev);
+                    });
+
+                    // var myDataPoint = L.marker([lat, longi]).addTo(mymap);
+                    // build_maps(lat, longi);
+                  
+                 //tambahan
+                    console.log(lat, longi, loc);
+
+                  var i = 0;
+                  // var banjir = 6; //harusnya generate dari nilai value sensor
+                  // var tampil;
+                 
+                  while (i < lat.length) {  
+                    // if (banjir > 4) { 
+                      // tampil = 'tidak banjir'; 
+                    var myDataPoint = L.marker([lat[i],longi[i]]).addTo(mymap)
+                    // .bindPopup(lat[i] + ' , ' + longi[i] + '<br><b> ' + window.tampil + '</b>' + '<br>'+  loc[i] 
+                    .bindPopup(lat[i] + ' , ' + longi[i] + '<br>'+  loc[i] 
+                    + '<br><b> Device id : ' + dev[i] + '<br><a href="https://cekflood.herokuapp.com/show_sensor_dev/'+dev[i]+'" target="_blank" >Cek statistik untuk sensor '+dev[i]+'</a>')
+                   .openPopup();
+
+                  //  window tampil diambil dari hasil tampil di statistik
+
+                    // }
+                  i++;
+                  }
+
+                  //tambahan
+                  }
+                };
+                xhttp_maps.open('get', 'https://cekflood.herokuapp.com/show_geo', true);
+                xhttp_maps.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                // xhttp_maps.open("GET", "/test_maps.json", false);
+                xhttp_maps.send();
+//sampai sini
+</script>
+
+
+<footer class="container-fluid text-center">
+    <a href="#myPage" title="To Top">
+    <span class="glyphicon glyphicon-chevron-up"></span>
+  </a>
+  <p>Bootstrap Theme Made By <a href="https://www.w3schools.com" title="Visit w3schools">www.w3schools.com</a></p>
+</footer>
+
+<script>
+$(document).ready(function(){
+  // Add smooth scrolling to all links in navbar + footer link
+  $(".navbar a, footer a[href='#myPage']").on('click', function(event) {
+    // Make sure this.hash has a value before overriding default behavior
+    if (this.hash !== "") {
+      // Prevent default anchor click behavior
+      event.preventDefault();
+
+      // Store hash
+      var hash = this.hash;
+
+      // Using jQuery's animate() method to add smooth page scroll
+      // The optional number (900) specifies the number of milliseconds it takes to scroll to the specified area
+      $('html, body').animate({
+        scrollTop: $(hash).offset().top
+      }, 900, function(){
+   
+        // Add hash (#) to URL when done scrolling (default click behavior)
+        window.location.hash = hash;
+      });
+    } // End if
+  });
+  
+  $(window).scroll(function() {
+    $(".slideanim").each(function(){
+      var pos = $(this).offset().top;
+
+      var winTop = $(window).scrollTop();
+        if (pos < winTop + 600) {
+          $(this).addClass("slide");
+        }
+    });
+  });
+})
+</script>
+
+</body>
+</html>
