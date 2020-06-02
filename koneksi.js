@@ -5,7 +5,7 @@ var db = mysql.createConnection({
     user: "wAJsibpSOv",
     password: "lmQiJMOhzk",
     database: "wAJsibpSOv",
-    timezone : "UTC+7"
+    timezone : "UTC+0"
 
 });
 
