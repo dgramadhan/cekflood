@@ -9,9 +9,9 @@ var db = mysql.createConnection({
 
 });
 
-db.connect(function(err) {
-    if(err) throw err;
-    console.log("Connected!");
-});
+// db.connect(function(err) {
+//     if(err) throw err;
+//     console.log("Connected!");
+// });
 
 module.exports = db;
