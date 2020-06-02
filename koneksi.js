@@ -4,7 +4,8 @@ var db = mysql.createConnection({
     host: "remotemysql.com",
     user: "wAJsibpSOv",
     password: "lmQiJMOhzk",
-    database: "wAJsibpSOv"
+    database: "wAJsibpSOv",
+    timezone : "UTC+7"
 
 });
 
