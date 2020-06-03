@@ -33,7 +33,7 @@ exports.sensor = function(req, res) {
 };
 
 exports.sensor_post = function(req, res) {
-    connection.query('INSERT INTO sensor (id_sensor, value_sensor, id_dev) VALUES (?,?,?)', [req.body.id_sensor, req.body.value_sensor, req.body.id_dev], function (error, rows, fields){
+    connection.query('INSERT INTO sensor (id_sensor, value_sensor, id_dev, waktu) VALUES (?,?,?,CURTIME())', [req.body.id_sensor, req.body.value_sensor, req.body.id_dev], function (error, rows, fields){
         if(error){
             console.log(error)
         } 
