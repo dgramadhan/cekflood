@@ -35,7 +35,7 @@ exports.sensor = function(req, res) {
 const moment = require('moment');
 
 exports.sensor_post = function(req, res) {
-	const today = moment().format('HH:mm:ss');
+const today = moment().format('HH:mm:ss');
     connection.query('INSERT INTO sensor (id_sensor, value_sensor, id_dev, waktu) VALUES (?,?,?,?)', [req.body.id_sensor, req.body.value_sensor, req.body.id_dev, today], function (error, rows, fields){
         if(error){
             console.log(error)
