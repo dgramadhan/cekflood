@@ -66,6 +66,77 @@
   </form>
 </div>
 
+<!-- Container (About Section) -->
+<!-- <div id="about" class="container-fluid">
+  <div class="row">
+    <div class="col-sm-8">
+      <h2>About Website Page</h2><br>
+      <h4>Website ini menginformasikan kejadian banjir yang terjadi di sekitar jalan raya</h4><br>
+      <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+      <br><button class="btn btn-default btn-lg">Get in Touch</button>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-signal logo"></span>
+    </div>
+  </div>
+</div> -->
+
+<!-- <div class="container-fluid bg-grey">
+  <div class="row">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-globe logo slideanim"></span>
+    </div>
+    <div class="col-sm-8">
+      <h2>Our Values</h2><br>
+      <h4><strong>MISSION:</strong> Our mission lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</h4><br>
+      <p><strong>VISION:</strong> Our vision Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+      Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+    </div>
+  </div>
+</div> -->
+
+<!-- Container (Services Section) -->
+<!-- <div id="services" class="container-fluid text-center">
+  <h2>SERVICES</h2>
+  <h4>What we offer</h4>
+  <br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-off logo-small"></span>
+      <h4>POWER</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-heart logo-small"></span>
+      <h4>LOVE</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-lock logo-small"></span>
+      <h4>JOB DONE</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+  </div>
+  <br><br>
+  <div class="row slideanim">
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-leaf logo-small"></span>
+      <h4>GREEN</h4>
+      <p>Lorem ipsum dolor sit amet..</p> 
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-certificate logo-small"></span>
+      <h4>CERTIFIED</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+    <div class="col-sm-4">
+      <span class="glyphicon glyphicon-wrench logo-small"></span>
+      <h4 style="color:#303030;">HARD WORK</h4>
+      <p>Lorem ipsum dolor sit amet..</p>
+    </div>
+  </div>
+</div> -->
+
 <!-- Container (Contact Section) -->
 <div id="map_div" class="container-fluid bg-grey">
   <h2 class="text-center">MAPS</h2>
@@ -80,9 +151,9 @@
 <!-- Container (Statistics Section) -->
 <div id="portfolio" class="container-fluid text-center bg-grey">
   <h2>STATISTICS</h2><br>
-  <!-- <h4>Statistik Pembacaan Sensor</h4> -->
+  <h4>Statistik Pembacaan Sensor</h4>
   <div class="row text-center">
-    <!-- <div class="col-md-2"></div>
+    <div class="col-md-2"></div>
     <div class="col-md-8">
         <canvas id="myChart" width="100" height="70"></canvas>
                     <script>
@@ -190,10 +261,10 @@
 
                     </script>
     </div>
-    <div class="col-md-2"></div><br> -->
+    <div class="col-md-2"></div><br>
     <!-- <br><button class="btn btn-default btn-lg">Get in Touch</button> -->
     <!-- Untuk sensor 1 -->
-    <!-- <div class="col-md-12">
+    <div class="col-md-12">
         <input type="submit" value="Sensor1" onclick="submit1()">
 
         <script type="text/javascript">
@@ -207,15 +278,15 @@
                 }
                 // var device = 10;
                 // xhr.open('get', 'http://127.0.0.1:3000/show_sensor/'+'1'+'/'+device+'', true);
-                xhr.open('get', 'http://127.0.0.1:3000/show_sensor/1', true);
+                xhr.open('get', 'https://cekflood.herokuapp.com/show_sensor/1', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
                 xhr.send();
             }
-        </script> -->
+        </script>
 
          <!-- Untuk sensor 2 -->
 
-        <!-- <input type="submit" value="Sensor2" onclick="submit2()">
+        <input type="submit" value="Sensor2" onclick="submit2()">
 
         <script type="text/javascript">
             function submit2() {
@@ -228,15 +299,15 @@
                 }
                 // var device = 20;
                 // xhr.open('get', 'http://127.0.0.1:3000/show_sensor/'+'2'+'/'+device+'', true);
-                xhr.open('get', 'http://127.0.0.1:3000/show_sensor/2', true);
+                xhr.open('get', 'https://cekflood.herokuapp.com/show_sensor/2', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
                 xhr.send();
             }
-        </script> -->
+        </script>
 
          <!-- Untuk sensor 3 -->
 
-        <!-- <input type="submit" value="Sensor3" onclick="submit3()">
+        <input type="submit" value="Sensor3" onclick="submit3()">
 
         <script type="text/javascript">
             function submit3() {
@@ -249,14 +320,14 @@
                 }
                 // var device = 30;
                 // xhr.open('get', 'http://127.0.0.1:3000/show_sensor/'+'3'+'/'+device+'', true);
-                xhr.open('get', 'http://127.0.0.1:3000/show_sensor/3', true);
+                xhr.open('get', 'https://cekflood.herokuapp.com/show_sensor/3', true);
                 xhr.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
                 xhr.send();
             }
         </script>
         </div>
 
-  </div><br> -->
+  </div><br>
 <!-- //CHART BARU -->
   <script>var device = '<%= data %>' ;</script>
   <div class="row text-center">
@@ -265,8 +336,8 @@
         <h1>Statistik untuk Sensor 1 <script>document.write("Pada device " + window.device)</script></h1>
           <canvas id="myChart2" width="100" height="70"></canvas>
                       <script>
-                          // var device = 455;
-                          function BuildChart2(labels, values) {
+                         // var device = 455;
+                         function BuildChart2(labels, values) {
                           var ctx = document.getElementById('myChart2').getContext('2d');
                           var myChart2 = new Chart(ctx, {
                               type: 'line',
@@ -303,7 +374,7 @@
                       // Map json labels  back to values array
                       var labels = json.map(function (e) {
                           console.log(e);
-                          return e.time;
+                          return e.waktu;
                       
                       });
                           
@@ -312,52 +383,81 @@
                           console.log(e);
                           return e.value_sensor; 
                       });
+                      
 
-                      //TAMBAHAN BUAT KETERANGAN - 1 JUNI 2020
-
-                    var tampil;
-                    function compare() {  
-                    // first item of the array 
-                    let f=values[0];  
-                    // last item of the array 
-                    let l=values[values.length-1];  
-                    // printing the output to screen 
-                    // document.write("First element is "+ f);  
-                    // document.write("<br> Last element is "+ l);  
-                    
-                    
-
-                    if (l>=200) {
-                      window.tampil = "banjir";
-                      document.write("<div class='alert alert-danger' role='alert'>"+
-                      "Banjir </div>");            
+                      //TAMBAHAN UNTUK TABEL
+                      var txt = "";
+                      txt += "<table class='table table-striped table-bordered'> <tr class='info'><td><b>Time </td><td> Values </b></td></tr>"
+                     
+                      for (x in json) {
+                        txt += "<tr><td>" + json[x].time + "</td>";
+                        txt += "<td>" + json[x].value_sensor + "</td></tr>";
                       }
-                    else if (l<200){
-                      window.tampil = "tidak banjir";
-                      document.write("<div class='alert alert-info' role='alert'>"+
-                      "Tidak Banjir </div>"); 
+                      txt += "</table>" 
 
-                      }
-
-                    }
-                    compare(); 
-
-                    //TAMBAHAN BUAT KETERANGAN - END
+                      document.getElementById("tabel1").innerHTML = txt;
+                      //TAMBAHAN UNTUK TABEL
   
                       console.log(values); 
                       BuildChart2(labels, values);
                           }
                       };
                       
-                      xhttp2.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'1'+'/'+device+'', false);
+                      xhttp2.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'1'+'/'+device+'', true);
                       // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
                       xhttp2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
                       xhttp2.send();
-  
+
+
+
+                      var ket = new XMLHttpRequest();
+                      ket.onreadystatechange = function() {
+                          if (this.readyState == 4 && this.status == 200) {
+                            var json = JSON.parse(this.response);
+                          
+                                               
+                      // Map json values back to values array
+                      var values = json.map(function (e) {
+                          console.log(e);
+                          return e.value_sensor; 
+                      });
+
+                        var tampil;
+                        function compare() {  
+                        let f=values[0];  
+                        let l=values[values.length-1];  
+                                                
+
+                        if (l>=200) {
+                          window.tampil = "banjir";
+                          document.write("<div class='alert alert-danger' role='alert'>"+
+                          "Banjir </div>");            
+                          }
+                        else if (l<200){
+                          window.tampil = "tidak banjir";
+                          document.write("<div class='alert alert-info' role='alert'>"+
+                          "Tidak Banjir </div>"); 
+
+                          }
+
+                        }
+                        compare();
+                      }
+                    };
+                      ket.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'1'+'/'+device+'', false);
+                      // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
+                      ket.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                      ket.send();
                       </script>
       </div>
       <div class="col-md-2"></div><br>
       </div><br>
+
+      <div class="row text-center">
+        <div class="col-md-2"></div>
+         <div class="col-md-8 text-center" id = "tabel1"></div>
+        <div class="col-md-2"></div>
+    </div>
 
       <!-- //CHART BARU2 -->
   <div class="row text-center">
@@ -366,7 +466,7 @@
           <h1>Statistik untuk Sensor 2  <script>document.write("Pada device " + window.device)</script></h1>
           <canvas id="myChart3" width="100" height="70"></canvas>
                       <script>
-                          function BuildChart3(labels, values) {
+                         function BuildChart3(labels, values) {
                           var ctx = document.getElementById('myChart3').getContext('2d');
                           var myChart3 = new Chart(ctx, {
                               type: 'line',
@@ -403,7 +503,7 @@
                       // Map json labels  back to values array
                       var labels = json.map(function (e) {
                           console.log(e);
-                          return e.time;
+                          return e.waktu;
                       
                       });
                           
@@ -412,49 +512,83 @@
                           console.log(e);
                           return e.value_sensor; 
                       });
+
+                      //TAMBAHAN UNTUK TABEL
+                      var txt = "";
+                      txt += "<table class='table table-striped table-bordered'> <tr class='info'><td><b>Time </td><td> Values </b></td></tr>"
+                     
+                      for (x in json) {
+                        txt += "<tr><td>" + json[x].time + "</td>";
+                        txt += "<td>" + json[x].value_sensor + "</td></tr>";
+                      }
+                      txt += "</table>" 
+
+                      document.getElementById("tabel2").innerHTML = txt;
+                      //TAMBAHAN UNTUK TABEL
   
                       console.log(values); 
-
-                    //TAMBAHAN BUAT KETERANGAN - START - 1 JUNI 2020
-
-                    var tampil;
-                    function compare() {  
-                    // first item of the array 
-                    let f=values[0];  
-                    // last item of the array 
-                    let l=values[values.length-1];  
-                    // printing the output to screen 
-                    // document.write("First element is "+ f);  
-                    // document.write("<br> Last element is "+ l);  
-
-                    if (l > 0 ) {
-                      document.write("<div class='alert alert-danger' role='alert'>"+
-                      "Air berada di ketinggian "+ l + "</div>"); 
-                    } else if (l <= 0 ) {
-                      document.write("<div class='alert alert-info' role='alert'>"+
-                      "Air berada di ketinggian "+ l + "</div>"); 
-                    }
-
-                    }
-                    
-                     
-                    compare(); 
-
-                    //TAMBAHAN BUAT KETERANGAN - END
-
                       BuildChart3(labels, values);
                           }
                       };
                       
-                      xhttp3.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'2'+'/'+device+'', false);
+                      xhttp3.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'2'+'/'+device+'', true);
                       // xhttp3.open("get", "http://127.0.0.1:3000/show_sensor/2", true);
                       xhttp3.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
                       xhttp3.send();
+
+                      var ket2 = new XMLHttpRequest();
+                      ket2.onreadystatechange = function() {
+                          if (this.readyState == 4 && this.status == 200) {
+                            var json = JSON.parse(this.response);
+                          
+                                             
+                      // Map json values back to values array
+                      var values = json.map(function (e) {
+                          console.log(e);
+                          return e.value_sensor; 
+                      });
+
+                      var tampil;
+                        function compare() {  
+                        // first item of the array 
+                        let f=values[0];  
+                        // last item of the array 
+                        let l=values[values.length-1];  
+                        // printing the output to screen 
+                        // document.write("First element is "+ f);  
+                        // document.write("<br> Last element is "+ l);  
+
+                        if (l > 0 ) {
+                          document.write("<div class='alert alert-danger' role='alert'>"+
+                          "Air berada di ketinggian "+ l + "</div>"); 
+                        } else if (l <= 0 ) {
+                          document.write("<div class='alert alert-info' role='alert'>"+
+                          "Air berada di ketinggian "+ l + "</div>"); 
+                        }
+
+                        }
+                        
+                        
+                        compare(); 
+
+                        }
+                      };
+                      ket2.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'2'+'/'+device+'', false);
+                      // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
+                      ket2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                      ket2.send();
   
                       </script>
       </div>
       <div class="col-md-2"></div><br>
       </div><br>
+
+      <div class="row text-center">
+        <div class="col-md-2"></div>
+         <div class="col-md-8 text-center" id = "tabel2"></div>
+        <div class="col-md-2"></div>
+    </div>
+
 
 
       <!-- //CHART BARU 3-->
@@ -501,7 +635,7 @@
                       // Map json labels  back to values array
                       var labels = json.map(function (e) {
                           console.log(e);
-                          return e.time;
+                          return e.waktu;
                       
                       });
                           
@@ -510,48 +644,82 @@
                           console.log(e);
                           return e.value_sensor; 
                       });
+
+                      //TAMBAHAN TABEL
+                      var txt = "";
+                      txt += "<table class='table table-striped table-bordered'> <tr class='info'><td><b>Time </td><td> Values </b></td></tr>"
+                     
+                      for (x in json) {
+                        txt += "<tr><td>" + json[x].time + "</td>";
+                        txt += "<td>" + json[x].value_sensor + "</td></tr>";
+                      }
+                      txt += "</table>" 
+
+                      document.getElementById("tabel3").innerHTML = txt;
   
                       console.log(values); 
-
-                    //TAMBAHAN BUAT KETERANGAN - START - 1 JUNI 2020
-                    function compare() {  
-                    // first item of the array 
-                    let f=values[0];  
-                    // last item of the array 
-                    let l=values[values.length-1];  
-                    // printing the output to screen 
-                    // document.write("First element is "+ f);  
-                    // document.write("<br> Last element is "+ l);  
-                    
-                    
-
-                    if (l>0) {
-                      document.write("<div class='alert alert-danger' role='alert'>"+
-                      "Hujan </div>");            
-                      }
-                    else if (l<=0){
-                      document.write("<div class='alert alert-info' role='alert'>"+
-                      "Tidak Hujan </div>");            
-                     }
-                    }
-                    
-                    compare(); 
-
-                    //TAMBAHAN BUAT KETERANGAN - END
-
                       BuildChart4(labels, values);
                           }
                       };
+                      //TAMBAHAN TABEL
 
-                      xhttp4.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'3'+'/'+device+'', false);
+                      xhttp4.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'3'+'/'+device+'', true);
                       // xhttp4.open("get", "http://127.0.0.1:3000/show_sensor/3", true);
                       xhttp4.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
                       xhttp4.send();
+
+                      var ket3 = new XMLHttpRequest();
+                      ket3.onreadystatechange = function() {
+                          if (this.readyState == 4 && this.status == 200) {
+                            var json = JSON.parse(this.response);
+                          
+                                               
+                      // Map json values back to values array
+                      var values = json.map(function (e) {
+                          console.log(e);
+                          return e.value_sensor; 
+                      });
+
+                      function compare() {  
+                        // first item of the array 
+                        let f=values[0];  
+                        // last item of the array 
+                        let l=values[values.length-1];  
+                        // printing the output to screen 
+                        // document.write("First element is "+ f);  
+                        // document.write("<br> Last element is "+ l);  
+                        
+                        
+
+                        if (l>0) {
+                          document.write("<div class='alert alert-danger' role='alert'>"+
+                          "Hujan </div>");            
+                          }
+                        else if (l<=0){
+                          document.write("<div class='alert alert-info' role='alert'>"+
+                          "Tidak Hujan </div>");            
+                        }
+                        }
+                        
+                        compare(); 
+
+                        }
+                      };
+                      ket3.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'3'+'/'+device+'', false);
+                      // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
+                      ket3.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                      ket3.send();
   
                       </script>
       </div>
       <div class="col-md-2"></div><br>
       </div><br>
+
+      <div class="row text-center">
+        <div class="col-md-2"></div>
+         <div class="col-md-8 text-center" id = "tabel3"></div>
+        <div class="col-md-2"></div>
+    </div>
   
   <h2>What our customers say</h2>
   <div id="myCarousel" class="carousel slide text-center" data-ride="carousel">
@@ -714,8 +882,7 @@ var xhttp_maps = new XMLHttpRequest();
                     // if (banjir > 4) { 
                       // tampil = 'tidak banjir'; 
                     var myDataPoint = L.marker([lat[i],longi[i]]).addTo(mymap)
-                    // .bindPopup(lat[i] + ' , ' + longi[i] + '<br><b> ' + window.tampil + '</b>' + '<br>'+  loc[i] 
-                    .bindPopup(lat[i] + ' , ' + longi[i] + '<br>'+  loc[i] 
+                    .bindPopup(lat[i] + ' , ' + longi[i] + '<br><b> ' + window.tampil + '</b>' + '<br>'+  loc[i] 
                     + '<br><b> Device id : ' + dev[i] + '<br><a href="https://cekflood.herokuapp.com/show_sensor_dev/'+dev[i]+'" target="_blank" >Cek statistik untuk sensor '+dev[i]+'</a>')
                    .openPopup();
 
