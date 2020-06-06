@@ -170,11 +170,37 @@
       width: 100%;
       margin-bottom: 35px;
     }
+   
   }
+
+  @media screen and (max-width: 600px) {
+    .container-fluid {
+      padding: 5px 5px;
+      font-size: 13px;
+    }
+
+  }
+
   @media screen and (max-width: 480px) {
     .logo {
       font-size: 150px;
     }
+    h1 {
+      font-size: 22px;
+    }
+    h2 {
+      font-size: 20px;
+    }
+    h3 {
+      font-size: 18px;
+    }
+    h4 {
+      font-size: 16px;
+    }
+    p {
+      font-size: 15px;
+    }
+   
   }
 
 
