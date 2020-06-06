@@ -671,47 +671,47 @@
                       xhttp4.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
                       xhttp4.send();
 
-                      var ket3 = new XMLHttpRequest();
-                      ket3.onreadystatechange = function() {
-                          if (this.status == 200) {
-                            var json = JSON.parse(this.response);
+//                       var ket3 = new XMLHttpRequest();
+//                       ket3.onreadystatechange = function() {
+//                           if (this.status == 200) {
+//                             var json = JSON.parse(this.response);
                           
                                                
-                      // Map json values back to values array
-                      var values = json.map(function (e) {
-                          console.log(e);
-                          return e.value_sensor; 
-                      });
+//                       // Map json values back to values array
+//                       var values = json.map(function (e) {
+//                           console.log(e);
+//                           return e.value_sensor; 
+//                       });
 
-                      function compare() {  
-                        // first item of the array 
-                        let f=values[0];  
-                        // last item of the array 
-                        let l=values[values.length-1];  
-                        // printing the output to screen 
-                        // document.write("First element is "+ f);  
-                        // document.write("<br> Last element is "+ l);  
+//                       function compare() {  
+//                         // first item of the array 
+//                         let f=values[0];  
+//                         // last item of the array 
+//                         let l=values[values.length-1];  
+//                         // printing the output to screen 
+//                         // document.write("First element is "+ f);  
+//                         // document.write("<br> Last element is "+ l);  
                         
                         
 
-                        if (l>0) {
-                          document.write("<div class='alert alert-danger' role='alert'>"+
-                          "Hujan </div>");            
-                          }
-                        else if (l<=0){
-                          document.write("<div class='alert alert-info' role='alert'>"+
-                          "Tidak Hujan </div>");            
-                        }
-                        }
+//                         if (l>0) {
+//                           document.write("<div class='alert alert-danger' role='alert'>"+
+//                           "Hujan </div>");            
+//                           }
+//                         else if (l<=0){
+//                           document.write("<div class='alert alert-info' role='alert'>"+
+//                           "Tidak Hujan </div>");            
+//                         }
+//                         }
                         
-                        compare(); 
+//                         compare(); 
 
-                        }
-                      };
-                      ket3.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'3'+'/'+device+'', false);
-                      // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
-                      ket3.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-                      ket3.send();
+//                         }
+//                       };
+//                       ket3.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'3'+'/'+device+'', false);
+//                       // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
+//                       ket3.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+//                       ket3.send();
   
                       </script>
       </div>
