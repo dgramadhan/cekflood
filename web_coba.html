@@ -413,44 +413,44 @@
 
 
 
-//                       var ket = new XMLHttpRequest();
-//                       ket.onreadystatechange = function() {
-//                           if (this.readyState == 4 && this.status == 200) {
-//                             var json = JSON.parse(this.response);
+                      var ket = new XMLHttpRequest();
+                      ket.onreadystatechange = function() {
+                          if (this.status == 200) {
+                            var json = JSON.parse(this.response);
                           
                                                
-//                       // Map json values back to values array
-//                       var values = json.map(function (e) {
-//                           console.log(e);
-//                           return e.value_sensor; 
-//                       });
+                      // Map json values back to values array
+                      var values = json.map(function (e) {
+                          console.log(e);
+                          return e.value_sensor; 
+                      });
 
-//                         var tampil;
-//                         function compare() {  
-//                         let f=values[0];  
-//                         let l=values[values.length-1];  
+                        var tampil;
+                        function compare() {  
+                        let f=values[0];  
+                        let l=values[values.length-1];  
                                                 
 
-//                         if (l>=200) {
-//                           window.tampil = "banjir";
-//                           document.write("<div class='alert alert-danger' role='alert'>"+
-//                           "Banjir </div>");            
-//                           }
-//                         else if (l<200){
-//                           window.tampil = "tidak banjir";
-//                           document.write("<div class='alert alert-info' role='alert'>"+
-//                           "Tidak Banjir </div>"); 
+                        if (l>=200) {
+                          window.tampil = "banjir";
+                          document.write("<div class='alert alert-danger' role='alert'>"+
+                          "Banjir </div>");            
+                          }
+                        else if (l<200){
+                          window.tampil = "tidak banjir";
+                          document.write("<div class='alert alert-info' role='alert'>"+
+                          "Tidak Banjir </div>"); 
 
-//                           }
+                          }
 
-//                         }
-//                         compare();
-//                       }
-//                     };
-//                       ket.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'1'+'/'+device+'', false);
-//                       // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
-//                       ket.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-//                       ket.send();
+                        }
+                        compare();
+                      }
+                    };
+                      ket.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'1'+'/'+device+'', false);
+                      // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
+                      ket.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
+                      ket.send();
   
                       </script>
       </div>
