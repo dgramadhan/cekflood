@@ -386,6 +386,26 @@
                           console.log(e);
                           return e.value_sensor; 
                       });
+                            
+                      var tampil;
+                      var show;
+                        function compare() {  
+                        let f=values[0];  
+                        let l=values[values.length-1];  
+                                                
+
+                        if (l>=200) {
+                          window.tampil = "banjir"; 
+                          show = "<div class='alert alert-danger' role='alert'>"+ "Banjir </div>";
+                          }
+                        else if (l<200){
+                          window.tampil = "tidak banjir";
+                          show = "<div class='alert alert-info' role='alert'>"+"Tidak Banjir </div>";
+
+                           }
+
+                        }
+                        compare();
                       
 
                       //TAMBAHAN UNTUK TABEL
@@ -399,6 +419,7 @@
                       txt += "</table>" 
 
                       document.getElementById("tabel1").innerHTML = txt;
+                      document.getElementById("ket1").innerHTML = show;
                       //TAMBAHAN UNTUK TABEL
   
                       console.log(values); 
@@ -410,52 +431,17 @@
                       // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
                       xhttp2.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
                       xhttp2.send();
-
-
-
-//                       var ket = new XMLHttpRequest();
-//                       ket.onreadystatechange = function() {
-//                           if (this.status == 200) {
-//                             var json = JSON.parse(this.response);
-                          
-                                               
-//                       // Map json values back to values array
-//                       var values = json.map(function (e) {
-//                           console.log(e);
-//                           return e.value_sensor; 
-//                       });
-
-//                         var tampil;
-//                         function compare() {  
-//                         let f=values[0];  
-//                         let l=values[values.length-1];  
-                                                
-
-//                         if (l>=200) {
-//                           window.tampil = "banjir";
-//                           document.write("<div class='alert alert-danger' role='alert'>"+
-//                           "Banjir </div>");            
-//                           }
-//                         else if (l<200){
-//                           window.tampil = "tidak banjir";
-//                           document.write("<div class='alert alert-info' role='alert'>"+
-//                           "Tidak Banjir </div>"); 
-
-//                           }
-
-//                         }
-//                         compare();
-//                       }
-//                     };
-//                       ket.open('get', 'https://cekflood.herokuapp.com/show_sensor/'+'1'+'/'+device+'', false);
-//                       // xhttp2.open("get", "http://127.0.0.1:3000/show_sensor/1", true);
-//                       ket.setRequestHeader('Content-Type', 'application/x-www-form-urlencoded; charset=UTF-8');
-//                       ket.send();
-  
+ 
                       </script>
       </div>
       <div class="col-md-2"></div><br>
       </div><br>
+      
+       <div class="row text-center">
+        <div class="col-md-2"></div>
+         <div class="col-md-8 text-center" id = "ket1"></div>
+        <div class="col-md-2"></div>
+      </div>
 
       <div class="row text-center">
           <div class="col-md-2"></div>
@@ -516,6 +502,29 @@
                           console.log(e);
                           return e.value_sensor; 
                       });
+                            
+                       var show;
+                        function compare() {  
+                        // first item of the array 
+                        let f=values[0];  
+                        // last item of the array 
+                        let l=values[values.length-1];  
+                        // printing the output to screen 
+                        // document.write("First element is "+ f);  
+                        // document.write("<br> Last element is "+ l);  
+
+                        if (l > 0 ) {
+                            show = "<div class='alert alert-danger' role='alert'>"+
+                            "Air berada di ketinggian "+ l + "</div>"; 
+                          } else if (l <= 0 ) {
+                            show = "<div class='alert alert-info' role='alert'>"+
+                            "Air berada di ketinggian "+ l + "</div>"; 
+                          }
+
+                        }
+                        
+                        
+                        compare();
 
                       //TAMBAHAN UNTUK TABEL
                       var txt = "";
@@ -526,7 +535,8 @@
                         txt += "<td>" + json[x].value_sensor + "</td></tr>";
                       }
                       txt += "</table>" 
-
+                            
+                      document.getElementById("ket2").innerHTML = show;
                       document.getElementById("tabel2").innerHTML = txt;
                       //TAMBAHAN UNTUK TABEL
   
@@ -586,6 +596,12 @@
       </div>
       <div class="col-md-2"></div><br>
       </div><br>
+  
+      <div class="row text-center">
+        <div class="col-md-2"></div>
+         <div class="col-md-8 text-center" id = "ket2"></div>
+        <div class="col-md-2"></div>
+      </div>
 
       <div class="row text-center">
           <div class="col-md-2"></div>
@@ -647,6 +663,26 @@
                           console.log(e);
                           return e.value_sensor; 
                       });
+                            
+                        var show;
+                      function compare() {  
+                        // first item of the array 
+                        let f=values[0];  
+                        // last item of the array 
+                        let l=values[values.length-1];  
+                       
+                        if (l>0) {
+                          show = "<div class='alert alert-danger' role='alert'>"+
+                          "Hujan </div>";            
+                          }
+                        else if (l<=0){
+                          show = "<div class='alert alert-info' role='alert'>"+
+                          "Tidak Hujan </div>";            
+                        }
+                        }
+                        
+                        compare(); 
+
 
                       //TAMBAHAN TABEL
                       var txt = "";
@@ -657,7 +693,8 @@
                         txt += "<td>" + json[x].value_sensor + "</td></tr>";
                       }
                       txt += "</table>" 
-
+                      
+                       document.getElementById("ket3").innerHTML = show;
                       document.getElementById("tabel3").innerHTML = txt;
   
                       console.log(values); 
@@ -717,6 +754,12 @@
       </div>
       <div class="col-md-2"></div><br>
       </div><br>
+  
+      <div class="row text-center">
+        <div class="col-md-2"></div>
+         <div class="col-md-8 text-center" id = "ket3"></div>
+        <div class="col-md-2"></div>
+      </div>
 
       <div class="row text-center">
           <div class="col-md-2"></div>
