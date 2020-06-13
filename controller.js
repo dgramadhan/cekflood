@@ -35,64 +35,60 @@ exports.sensor = function(req, res) {
 const moment = require('moment');
 
 exports.sensor_post = function(req, res) {
-const day = moment().format('YYYY-MM-DD HH:mm:ss');
-const today = moment().format('HH:mm:ss');
+    const day = moment().format('YYYY-MM-DD HH:mm:ss');
+    const today = moment().format('HH:mm:ss');
     connection.query('INSERT INTO sensor (id_sensor, value_sensor, id_dev, time, waktu) VALUES (?,?,?,?,?)', [req.body.id_sensor, req.body.value_sensor, req.body.id_dev, day, today], function (error, rows, fields){
         if(error){
             console.log(error)
         } 
             response.db_true(rows, res)
 
-            //tambahan
-            if (req.body.value_sensor > 2000) {
-                if (req.body.id_sensor == 1) {
-                    nama_sensor = "Sensor1"
+            var keterangan;
+
+            if (req.body.id_sensor == 1) {
+                if (req.body.value_sensor > 200) {
+                    keterangan = day + 
+
+                    "\nHarap waspada air pada saluran air telah melewati batas normal. "+
+
+                    "\nStatistik dan lokasi dapat dilihat pada https://cekflood.herokuapp.com/show_sensor_dev/"+req.body.id_dev+"";
                 }
+                
+            }
 
-                if (req.body.id_sensor == 2) {
-                    nama_sensor = "Sensor2"
+            if (req.body.id_sensor == 2) {
+
+                if (req.body.value_sensor > 3) {
+                keterangan = day + 
+                
+                "\nHarap waspada banjir telah mencapai jalan raya dengan ketinggian " + req.body.value_sensor + " cm , Mohon mencari jalan alternatif lain." +
+
+                "\nStatistik dan lokasi dapat dilihat pada https://cekflood.herokuapp.com/show_sensor_dev/"+req.body.id_dev+"";
                 }
+            }
 
-                if (req.body.id_sensor == 3) {
-                    nama_sensor = "Sensor3"
-                }
-
-            // api.sendMessage({
-            //     chat_id: 676085757,
-            //     text: 'Banjir di ' + nama_sensor + ", ketinggian " + req.body.value_sensor
-            // })
-            // .then(function(data)
-            // {
-            //     console.log(util.inspect(data, false, null));
-            // })
-            // .catch(function(err)
-            // {
-            //     console.log(err);
-            // });
-
-                connection.query("SELECT * FROM telegram", function (err, result, fields) {
-               if (err) throw err;
-            
-               let l= result.length;  
-               console.log(l);
-            
-               let i = 0;
-                while (i<l) {
-                    let f=result[i].id_telegram;  
-                    console.log(f);
-            
-                bot.telegram.sendMessage(f, 'Banjir di ' + nama_sensor + ", ketinggian " + req.body.value_sensor);
-            
-                i++;
-                }
-            
-                });
-
-        }
-            //tambahan
-            
+            connection.query("SELECT * FROM telegram", function (err, result, fields) {
+                if (err) throw err;
+             
+                let l= result.length;  
+                console.log(l);
+             
+                 let i = 0;
+                 while (i<l) {
+                     let f=result[i].id_telegram;  
+                     console.log(f);
+             
+                     bot.telegram.sendMessage(f, keterangan);
+                 
+                     i++;
+                 }
+             
+                 });
+           
     });
 };
+
+
 
 exports.show_sensor = function(req, res) {
     
