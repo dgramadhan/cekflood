@@ -413,9 +413,45 @@ exports.geo = function(req, res) {
 
 exports.show_geo = function (req, res) {
     connection.query('SELECT * FROM test', function (error, rows, fields){
+
+        var data_total = rows.length;
+        let x = 0;
+        while (x < data_total) {
+            var hasil_id = rows[x].id_dev;
+            var show;
+            var id_dev2
+            console.log(hasil_id);
+            x++;
+            
+
+            connection.query('SELECT * FROM sensor where id_sensor = "1" and id_dev = ? ORDER BY auto_inc DESC LIMIT 1', [hasil_id], function (error, result, fields){ 
+                let last_value = result[0].value_sensor;
+                id_dev2 = result[0].id_dev;
+
+                console.log (last_value);
+                if (last_value >= 200) {
+                    show = "Banjir";
+                    console.log(show);
+                   
+                } else {
+                    show = "Tidak Banjir";
+                    console.log(show);
+                }
+
+                connection.query('UPDATE test SET ket = ? WHERE id_dev = ?',[show, id_dev2], function (error, rows, fields){
+                    
+                });
+
+            });
+            
+          
+
+        }
+
         if(error){
             console.log(error)
         } else if(rows.length > 0){
+            
           fs.writeFile(path.join(__dirname, '/json','test_maps.json'), [JSON.stringify(rows)], error => {
           
             if (error) throw error;
@@ -430,6 +466,5 @@ exports.show_geo = function (req, res) {
     });
 
 
-	
 
 }
