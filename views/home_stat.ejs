@@ -64,7 +64,24 @@
       </div>
     </div>
   </form>
+  <br>
+  <br>
+  <div id="tutorial">
+      <button type="button" class="btn btn btn-info" data-placement="bottom" data-toggle="popover">Tidak mengetahui ID Telegram anda?</button>
+    </div>
 </div>
+
+
+<script>
+    $(document).ready(function(){
+     $('[data-toggle="popover"]').popover({
+       html : true,
+       content : '<h3 class="head-tutor"><b>Tutorial untuk mendapatkan ID Telegram</b></h3><div class="tutor-text">1. Untuk langkah pertama yaitu dengan mencari bot dengan nama IDBot, pencarian dapat dilakukan pada icon search yang berada pada ujung kanan atas aplikasi<br><br><img src="/telegram/1.jpeg" class="media-object"><br><img src="/telegram/2.jpeg" class="media-object"><br>2. Setelah dipilih IDBot tersebut dan sudah masuk ke dalam room chat, maka masukkan pesan <b>/start</b> atau klik Start pada bagian bawah <br><br><img src="/telegram/3.jpeg" class="media-object"><br> 3. Lalu kirimkan pesan <b>/getid</b> dalam chat room tersebut, maka bot akan mengirimkan ID Telegram untuk akun anda <br><br><img src="/telegram/4.jpeg" class="media-object"><br> 4. Setelah mendapatkan ID Telegram, maka masukkan ID Telegram tersebut kedalam form pada website ini untuk mendapatkan notifikasi mengenai banjir yang terjadi <br><br><img src="/telegram/5.png" class="media-object"></div>'
+   
+   });
+   
+   });
+</script>
 
 <!-- Container (About Section) -->
 <!-- <div id="about" class="container-fluid">
